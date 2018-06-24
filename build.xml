@@ -1,0 +1,97 @@
+<project name="Blockchain" default="HTTPServer" basedir=".">
+	
+	<property name="classesFolder" value="bin" />
+	
+	<property name="libs" value="
+		lib/bcprov-jdk15on-159.jar
+		lib/gson-2.6.2.jar
+		lib/org.eclipse.fx.ide.css.jfx8_2.4.0.201605112122.jar		
+		"/>
+	
+	<target name="HTTPServer">
+		<jar destfile="httpServer.jar"
+			basedir="${classesFolder}"
+				includes="org/blockchain/crypto/*,
+				org/blockchain/miner/*,
+				org/blockchain/node/*,
+				org/blockchain/node/exception/*,
+				org/blockchain/node/factory/*,
+				org/blockchain/node/model/*,
+				org/blockchain/peer/*,
+				org/blockchain/util/*,
+				org/blockchain/wallet/*,
+				org/blockchain/webserver/*,
+				">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}"/>
+				<attribute name="Class-Path" value="${libs}"/>
+				<attribute name="Main-Class" value="org.blockchain.node.HttpServerMain"/>
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="Miner">
+		<jar destfile="miner.jar"
+			basedir="${classesFolder}"
+				includes="org/blockchain/crypto/*,
+				org/blockchain/miner/*,
+				org/blockchain/node/*,
+				org/blockchain/node/exception/*,
+				org/blockchain/node/factory/*,
+				org/blockchain/node/model/*,
+				org/blockchain/peer/*,
+				org/blockchain/util/*,
+				org/blockchain/wallet/*,
+				org/blockchain/webserver/*,
+				">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}"/>
+				<attribute name="Class-Path" value="${libs}"/>
+				<attribute name="Main-Class" value="org.blockchain.miner.MinerMain"/>
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="PeerConnect">
+		<jar destfile="peerConnect.jar"
+			basedir="${classesFolder}"
+				includes="org/blockchain/crypto/*,
+				org/blockchain/miner/*,
+				org/blockchain/node/*,
+				org/blockchain/node/exception/*,
+				org/blockchain/node/factory/*,
+				org/blockchain/node/model/*,
+				org/blockchain/peer/*,
+				org/blockchain/util/*
+				">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}"/>
+				<attribute name="Class-Path" value="${libs}"/>
+				<attribute name="Main-Class" value="org.blockchain.peer.PeerConnect"/>
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="Wallet">
+		<jar destfile="wallet.jar"
+			basedir="${classesFolder}"
+				includes="org/blockchain/crypto/*,
+				org/blockchain/miner/*,
+				org/blockchain/node/*,
+				org/blockchain/node/exception/*,
+				org/blockchain/node/factory/*,
+				org/blockchain/node/model/*,
+				org/blockchain/peer/*,
+				org/blockchain/util/*,
+				org/blockchain/wallet/*,
+				org/blockchain/webserver/*,
+				">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}"/>
+				<attribute name="Class-Path" value="${libs}"/>
+				<attribute name="Main-Class" value="org.blockchain.wallet.WalletApplication"/>
+			</manifest>
+		</jar>
+	</target>
+	
+</project>
